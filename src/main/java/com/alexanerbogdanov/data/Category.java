@@ -3,9 +3,12 @@ package com.alexanerbogdanov.data;
 import java.util.Arrays;
 
 public enum Category {
-  SHOP("Магазины"), FUEL("АЗС"), BAR("Бары");
-  private final String description;
+  SHOP("Магазины"),
+  FUEL("АЗС"),
+  FLOWER("Цветы"),
+  BAR("Бары");
 
+  private final String description;
 
   Category(String description) {
     this.description = description;
@@ -16,9 +19,10 @@ public enum Category {
   }
 
   public static Category findCategory(String description) {
-    return Arrays.stream(values())
+   return Arrays.stream(values())
             .filter(category -> category.getDescription().equals(description))
             .findFirst()
-            .orElseThrow();
+            .orElseThrow(() -> new IllegalArgumentException("No category found with description: " + description));
   }
 }
+
