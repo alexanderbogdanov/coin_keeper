@@ -20,6 +20,5 @@ public enum Category {
             .filter(category -> category.getDescription().equals(description))
             .findFirst()
             .orElseThrow();
-
   }
 }
